@@ -6,7 +6,7 @@
 #    By: jbarredo <jbarredo@student.42urduliz.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/22 17:19:24 by jbarredo          #+#    #+#              #
-#    Updated: 2021/08/20 16:44:05 by jbarredo         ###   ########.fr        #
+#    Updated: 2021/09/03 18:51:11 by jbarredo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,36 @@ SRCS	= ft_isalpha.c\
 		  ft_memchr.c\
 		  ft_memcmp.c\
 		  ft_strnstr.c\
-		  ft_atoi.c
-
-LIBC	= ar -rcs
+		  ft_atoi.c\
+		  ft_calloc.c\
+		  ft_strdup.c\
+		  ft_substr.c\
+		  ft_strjoin.c\
+		  ft_split.c\
+		  ft_putchar_fd.c\
+		  ft_putstr_fd.c\
+		  ft_putendl_fd.c\
+		  ft_putnbr_fd.c\
+		  ft_strtrim.c\
+		  ft_strmapi.c\
+		  ft_striteri.c\
+		  ft_itoa.c
 
 OBJS	= $(SRCS:.c=.o)
 
+BONUS	= ft_lstnew.c\
+		  ft_lstadd_front.c\
+		  ft_lstsize.c\
+		  ft_lstlast.c\
+		  ft_lstadd_back.c\
+		  ft_lstdelone.c\
+		  ft_lstclear.c\
+		  ft_lstiter.c
+
+BONUS_OBJS	= $(BONUS:.c=.o)
+
+LIBC	=ar rcs
+		  
 CC	= gcc -c -o
 
 RM	= rm -f
@@ -54,12 +78,15 @@ $(NAME): $(OBJS) $(INCLUDE)
 
 all:	$(NAME)
 
+bonus: $(OBJS) $(BONUS_OBJS) $(INCS)
+	$(LIBC) $(NAME) $(OBJS) $(BONUS_OBJS)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: clean all
 
-.PHONY: all clean fclean re .c .o
+.PHONY: all bonus clean fclean re .c .o
