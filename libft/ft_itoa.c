@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 17:41:55 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/09/02 18:24:26 by jbarredo         ###   ########.fr       */
+/*   Updated: 2021/09/07 15:59:25 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_len(long nb)
 {
 	int	len;
 
+	len = 0;
 	if (nb <= 0)
 		len = 1;
 	while (nb != 0)
@@ -34,7 +35,7 @@ char	*ft_itoa(int n)
 
 	nb = n;
 	len = ft_len(nb);
-	ptr = malloc(sizeof(char) * ft_len(nb) + 1);
+	ptr = (char *)malloc(sizeof(*ptr) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	ptr[len--] = '\0';

@@ -6,7 +6,7 @@
 #    By: jbarredo <jbarredo@student.42urduliz.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/22 17:19:24 by jbarredo          #+#    #+#              #
-#    Updated: 2021/09/03 18:51:11 by jbarredo         ###   ########.fr        #
+#    Updated: 2021/09/07 18:17:09 by jbarredo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ BONUS	= ft_lstnew.c\
 		  ft_lstadd_back.c\
 		  ft_lstdelone.c\
 		  ft_lstclear.c\
-		  ft_lstiter.c
+		  ft_lstiter.c\
+		  ft_lstmap.c
 
 BONUS_OBJS	= $(BONUS:.c=.o)
 
