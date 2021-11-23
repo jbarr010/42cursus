@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 19:37:41 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/11/23 17:32:15 by event            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -19,15 +7,15 @@
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*str;
+	static char	*str[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	str = read_str(fd, str);
-	if (!str)
+	str[fd] = read_str(fd, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = get_line(str);
-	str = next_line(str);
+	line = get_line(str[fd]);
+	str[fd] = next_line(str[fd]);
 	return (line);
 }
 

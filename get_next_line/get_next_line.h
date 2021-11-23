@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:35:56 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/11/22 20:27:41 by jbarredo         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:07:07 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	*get_line(char *str);
 char	*next_line(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
+size_t	len_key(char *str, char key);
 
 #endif
