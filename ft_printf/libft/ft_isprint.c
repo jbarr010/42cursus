@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jbarredo <jbarredo@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:54:32 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:08 by jbarredo         ###   ########.fr       */
+/*   Created: 2021/07/22 19:07:37 by jbarredo          #+#    #+#             */
+/*   Updated: 2021/07/22 19:13:00 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <ctype.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int	*fill_stack(int n, char **parm);
-void	print_stack(int *stack, int n);
-int	check_char(int n, char **str);
-int	check_rep(int n, int *stack);
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
+}

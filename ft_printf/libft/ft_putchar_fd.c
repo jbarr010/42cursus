@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:54:32 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:08 by jbarredo         ###   ########.fr       */
+/*   Created: 2021/09/01 16:45:53 by jbarredo          #+#    #+#             */
+/*   Updated: 2021/09/01 17:14:21 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	*fill_stack(int n, char **parm);
-void	print_stack(int *stack, int n);
-int	check_char(int n, char **str);
-int	check_rep(int n, int *stack);
+void	ft_putchar_fd(char c, int fd)
+{
+	write (fd, &c, 1);
+}

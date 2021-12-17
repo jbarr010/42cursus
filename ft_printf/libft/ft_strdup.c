@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 19:43:56 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:13 by jbarredo         ###   ########.fr       */
+/*   Created: 2021/08/23 16:59:47 by jbarredo          #+#    #+#             */
+/*   Updated: 2021/08/23 17:19:56 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -34,28 +32,4 @@ char	*ft_strdup(const char *s1)
 	}
 	res[i] = '\0';
 	return (res);
-}
-
-int	main(int argc, char **argv)
-{
-	int		n;
-	int		*A;
-
-	if (argc <= 1)
-		return(0);
-	n = argc - 1;
-	if(check_char(n, argv))
-	{
-		A = fill_stack(n, argv);
-		if(check_rep(n, A))
-		{
-			print_stack(A, n);
-			printf("%s", "todo bien\n");
-		}
-		else
-			printf("%s", "\033[0;31mERROR REP\n\033[0m");
-	}
-	else
-		printf("%s", "\033[0;31mERROR CHAR\n\033[0m");
-	return (0);
 }

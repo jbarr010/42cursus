@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:54:32 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:08 by jbarredo         ###   ########.fr       */
+/*   Created: 2021/09/03 18:23:38 by jbarredo          #+#    #+#             */
+/*   Updated: 2021/09/07 16:14:53 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	*fill_stack(int n, char **parm);
-void	print_stack(int *stack, int n);
-int	check_char(int n, char **str);
-int	check_rep(int n, int *stack);
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (!del || !lst)
+		return ;
+	del(lst->content);
+	free(lst);
+}

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:54:32 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:08 by jbarredo         ###   ########.fr       */
+/*   Created: 2021/09/03 17:50:36 by jbarredo          #+#    #+#             */
+/*   Updated: 2021/09/07 16:19:54 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	*fill_stack(int n, char **parm);
-void	print_stack(int *stack, int n);
-int	check_char(int n, char **str);
-int	check_rep(int n, int *stack);
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*end;
+
+	end = *lst;
+	if (!(*lst))
+		*lst = new;
+	while (end != NULL)
+	{
+		if (end->next == NULL)
+		{
+			end->next = new;
+			break ;
+		}
+		end = end->next;
+	}
+}
