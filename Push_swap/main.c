@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:43:56 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/12/16 20:31:13 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/01/12 22:00:39 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,52 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-char	*ft_strdup(const char *s1)
-{
-	char	*res;
-	int		i;
-	size_t	size;
-
-	size = 0;
-	while (s1[size] != '\0')
-		size++;
-	res = malloc(sizeof(char) * (size + 1));
-	if (!res)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
-
 int	main(int argc, char **argv)
 {
 	int		n;
 	int		*A;
+	char	**str;
+	int		i;
 
 	if (argc <= 1)
+	{
+		printf("%s", "donde estan los tios???");
 		return(0);
-	n = argc - 1;
+	}
+	n = argc - 1;	
 	if(check_char(n, argv))
 	{
-		A = fill_stack(n, argv);
-		if(check_rep(n, A))
+		if (argc == 2)
 		{
-			print_stack(A, n);
-			printf("%s", "todo bien\n");
+			str = ft_split(argv[1], 32);
+			i = 0;
+			while(str[i])
+				i++;
+			A = fill_parm(i, str);
+			if (check_rep(i, A))
+			{
+				print_parm(A);
+				ft_arrtolist(i, A);
+			}
+			else
+			{
+				printf("%s\n", "se repite");
+				return (0);
+			}
 		}
-		else
-			printf("%s", "\033[0;31mERROR REP\n\033[0m");
+		if (argc > 2)
+		{
+			A = fill_stack(n, argv);
+			if(check_rep(n, A))
+			{
+				print_stack(A);
+				printf("%s", "todo bien\n");
+				ft_arrtolist(n, A);
+				printf("%s", "hago listas porque soy muy listo\n");	
+			}	
+			else
+				printf("%s", "\033[0;31mERROR REP\n\033[0m");
+		}
 	}
 	else
 		printf("%s", "\033[0;31mERROR CHAR\n\033[0m");

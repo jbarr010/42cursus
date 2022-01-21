@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 16:00:38 by jbarredo          #+#    #+#             */
-/*   Updated: 2021/09/07 18:18:38 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/01/12 21:57:56 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int			content;
 	struct s_list	*next;
 }	t_list;
 
