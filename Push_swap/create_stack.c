@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:02:49 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/01/12 19:39:44 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:35:50 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int	*fill_stack(int n, char **parm)
 	int	i;
 
 	stack = malloc(sizeof(int) * n);
-	i = n;
-	while(i > 0)
+	i = n - 1;
+	while(i >= 0)
 	{
 		if (ft_atoi_error(parm[i]))
 		{
-			stack[i] = ft_atoi(parm[i]);
+			stack[i] = ft_atoi(parm[i + 1]);
 			i--;
 		}
 		else
@@ -104,6 +104,7 @@ int	*fill_parm(int i, char **str)
 		if (ft_atoi_error(str[n]))
 		{
 			stack[n] = ft_atoi(str[n]);
+			printf("content parm: %d\n", stack[n]);
 			n--;
 		}
 		else
@@ -122,8 +123,8 @@ void	print_stack(int *stack)
 	int	*A;
 
 	A = stack;
-	i = 1;
-	while (stack[i])
+	i = 0;
+	while (A[i])
 	{
 		printf("%d\n", A[i]);
 		i++;

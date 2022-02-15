@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:41:49 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/01/12 17:07:51 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:39:33 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	check_rep(int n, int *stack)
 	int	j;
 
 	i = 0;
-	while(i <= n)
+	while(i < n)
 	{
 		j = i + 1;
-		while(j <= n)
+		while(j < n)
 		{
 			if(stack[i] == stack[j])
 				return (0);
