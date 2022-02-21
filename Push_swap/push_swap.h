@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct s_list
@@ -49,7 +48,7 @@ int		lstsize(t_list *lst);
 int		auxiliar(t_list *headA);
 int		*sort_array(int	*arr, int n);
 int		median(int *stack, int n);
-void	sort_five(t_list **headA, t_list **headB, t_list **tailA, int m);
+void	sort_five(t_list **headA, t_list **tailA);
 t_list	*swapB(t_list *head);
 int	smart_rotate(t_list *head, t_list *num);
 int	numbers_to_push(int	n);
@@ -76,4 +75,11 @@ int quartil_second(int *stack, int n);
  void    push_2(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int q1, int q2, int n);
  void    push_1(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int q1, int n);
  int numbers_to_push_500(int n);
+ t_list	*list_parm (char ** argv);
+ t_list	*list_simple(int n, char **argv);
+ void	sort_small(int	size, t_list **headA, t_list **tailA);
+ void	sort_two(t_list **head);
+ void	sort_four(t_list **headA, t_list **tailA);
+void	sort_hundred(t_list **headA, t_list **tailA, int n);
+void	sort_500(t_list **headA, t_list **tailA, int n);
 #endif

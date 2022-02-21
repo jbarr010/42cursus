@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+void	sort_small(int	size, t_list **headA, t_list **tailA)
+{
+	if (size == 1)
+		exit (0);
+	else if (size == 2)
+		sort_two(headA);
+	else if (size == 3)
+		sort_three(headA, tailA);
+	else if (size == 4)
+		sort_four(headA, tailA);
+	else if (size == 5)
+		sort_five(headA, tailA);
+}
+
+void	sort_two(t_list **head)
+{
+	if ((*head) -> content > (*head) -> next -> content)
+		(*head) = swap (*head);
+}
+
 void	sort_three(t_list **head, t_list **tail)
 {
 	int		h;
@@ -39,6 +59,32 @@ void	sort_three(t_list **head, t_list **tail)
 		reverse_rotateA(head, tail);
 }
 
+void	sort_four(t_list **headA, t_list **tailA)
+{
+	t_list	*temp;
+	t_list	*min;
+	t_list	*headB;
+
+	min = (*headA);
+	temp = (*headA) ->next;
+	headB = NULL;
+	while (temp)
+	{
+		if(min -> content > temp -> content)
+		{
+			min = temp;
+			temp = temp-> next;
+		}
+		else
+			temp = temp -> next;
+	}
+	while ((*headA) -> content != min -> content)
+		reverse_rotateA(headA, tailA);
+	pushB(headA, &headB);
+	sort_three(headA, tailA);
+	pushA(headA, &headB);
+}
+
 void	prepare_five(t_list **headA, t_list **headB, t_list **tailA, int m)
 {
 	int	i;
@@ -46,7 +92,7 @@ void	prepare_five(t_list **headA, t_list **headB, t_list **tailA, int m)
 	i = 2;
 	while(i)
 	{
-		if((*headA) -> content < m)
+		if((*headA) -> content <= m)
 		{
 			pushB(headA, headB);
 			i--;
@@ -56,19 +102,24 @@ void	prepare_five(t_list **headA, t_list **headB, t_list **tailA, int m)
 	}
 }
 
-void	sort_five(t_list **headA, t_list **headB, t_list **tailA, int m)
+void	sort_five(t_list **headA, t_list **tailA)
 {
-	prepare_five(headA, headB, tailA, m);
+	int	m;
+	t_list	*headB;
+
+	headB = NULL;
+	m = auxiliar(*headA);
+	prepare_five(headA, &headB, tailA, m);
 	sort_three(headA, tailA);
-	if ((*headB) -> content < (*headB) -> next -> content)
+	if ((headB) -> content < (headB) -> next -> content)
 	{
-		(*headB) = swapB(*headB);
-		pushA(headA, headB);
-		pushA(headA, headB);
+		(headB) = swapB(headB);
+		pushA(headA, &headB);
+		pushA(headA, &headB);
 	}
 	else
 	{
-		pushA(headA, headB);
-		pushA(headA, headB);
+		pushA(headA, &headB);
+		pushA(headA, &headB);
 	}
 }

@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+void	sort_500(t_list **headA, t_list **tailA, int n)
+{
+	t_list	*headB;
+	t_list	*tailB;
+	int	q1;
+	int	q2;
+	int	q3;
+	int	q4;
+
+	headB = NULL;
+	tailB = NULL;
+	q1 = q_value_1(*headA);
+	q2 = q_value_2(*headA);
+	q3 = q_value_3(*headA);
+	q4 = q_value_4(*headA);
+	push_5(headA, &headB, tailA, &tailB, q3, q4, n);
+	push_3(headA, &headB, tailA, &tailB, q2, q3, n);
+	push_2(headA, &headB, tailA, &tailB, q1, q2, n);
+}
+
 int	numbers_to_push_500(int	n)
 {
 	int	i;

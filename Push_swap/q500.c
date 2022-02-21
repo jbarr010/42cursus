@@ -101,7 +101,6 @@ int	quartil_3(int *stack, int n)
 	arr = stack;
 	i = (n/5) * 3;
 	q = arr[i];
-	//printf("Quartil : %d\n", q);
 	return(q);
 }
 
@@ -141,7 +140,6 @@ int	quartil_4(int *stack, int n)
 	arr = stack;
 	i = (n/5) * 4;
 	q = arr[i];
-	//printf("Quartil : %d\n", q);
 	return(q);
 }
 

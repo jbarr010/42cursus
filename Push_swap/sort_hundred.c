@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+void	sort_hundred(t_list **headA, t_list **tailA, int n)
+{
+	t_list	*headB;
+	t_list	*tailB;
+	int	q1;
+	int	q2;
+
+	headB = NULL;
+	tailB = NULL;
+	q1 = auxiliar(*headA);
+	q2 = q_value(*headA);
+	push_big(headA, &headB, tailA, &tailB, q2, n);
+	push_medium(headA, &headB, tailA, &tailB, q1, q2,n);
+}
+
+
 int	smart_rotate(t_list *head, t_list *num)
 {
 	int		i;
@@ -56,7 +72,6 @@ void	sort_B(t_list **headA, t_list **headB, t_list **tailB)
 	t_list	*move;
 	int		i;
 	int		big;
-	//t_list	*printB;
 
 	while (*headB)
 	{
@@ -89,45 +104,6 @@ void	sort_B(t_list **headA, t_list **headB, t_list **tailB)
 	}
 }
 
-
-
-/*void	sort_hundred(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int m, int n)
-{
-	int	i;
-	int	j;
-	//t_list	**tailB = NULL;
-	t_list	*temp;
-
-	i = numbers_to_push(n);
-	temp = (*headA);
-	while(i)
-	{
-		if ((*headA) -> content >= m)
-		{
-			pushB(headA, headB);
-			i--;
-		}
-		else
-			reverse_rotateA(headA, tailA);
-	}
-	(*tailB) = ft_lstlast(*headB);
-	sort_B(headA, headB, tailB);
-	i = numbers_to_push(n);
-	j = n - i;
-	while(j)
-	{
-		if((*headA) -> content < m)
-		{
-			pushB(headA, headB);
-			j--;
-		}
-		else
-			reverse_rotateA(headA, tailA);
-	}
-	(*tailB) = ft_lstlast(*headB);
-	sort_B(headA, headB, tailB);
-}*/
-
 void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int q, int n)
 {
 	t_list	*temp;
@@ -135,19 +111,13 @@ void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, in
 	int		big;
 	int		j;
 
-	//printf("La N es: %d\n", n);
 	j = numbers_to_push(n);
-	//printf("J : %d\n", j);
 	temp = (*headA);
 	while (j)
 	{
-		//printf("La Q2 es: %d\n", q);
 		if((temp -> content) >= q)
 		{
-			//printf("headA = %d\n", (*headA) -> content);
-			//printf("temp = %d\n", temp -> content);
 			i = smart_rotate((*headA), temp);
-			//printf("smart rotate big = %d\n", i);
 			big = temp -> content;
 			if (i == 1)
 			{
@@ -156,7 +126,6 @@ void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, in
 					rotateA(headA, tailA);
 				pushB(headA, headB);
 				j--;
-				//printf("La J es: %d\n", j);
 			}
 			else
 			{
@@ -180,17 +149,14 @@ void	push_small(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, 
 	int		i;
 	int		big;
 	int		j;
-	//t_list	*printB;
 
 	temp = (*headA);
 	j = (n - numbers_to_push(n))/2;
-	//printf("La J es: %d\n", j);
 	while (j)
 	{
 		if(temp -> content < q)
 		{
 			i = smart_rotate((*headA), temp);
-			//printf("smart rotate small: %d\n", i);
 			big = temp -> content;
 			if (i == 1)
 			{
@@ -223,18 +189,13 @@ void	push_medium(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB,
 	int		big;
 	int		j;
 
-	//printf("La Q es: %d\n", q);
 	j = (n - numbers_to_push(n))/2;	
 	temp = (*headA);
 	while (j)
 	{
-		//printf("temp content: %d\n", temp -> content);
 		if((temp -> content) < (q2) && (temp -> content) >= q)
 		{
-			//printf("headA = %d\n", (*headA) -> content);
-			//printf("temp = %d\n", temp -> content);
 			i = smart_rotate((*headA), temp);
-			//printf("smart rotate big = %d\n", i);
 			big = temp -> content;
 			if (i == 1)
 			{
@@ -243,7 +204,6 @@ void	push_medium(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB,
 					rotateA(headA, tailA);
 				pushB(headA, headB);
 				j--;
-				//printf("La J es: %d\n", j);
 			}
 			else
 			{

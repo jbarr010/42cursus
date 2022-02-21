@@ -21,7 +21,8 @@ SRCS	=  array_to_list.c\
 		   sort_hundred.c\
 		   sort_small.c\
 		   sort_500.c\
-		   q500.c
+		   q500.c\
+		   utils.c
 
 OBJS	= *.o 
 

@@ -88,7 +88,6 @@ int	median(int *stack, int n)
 	arr = stack;
 	i = n/2;
 	m = arr[i];
-	//printf("Mediana : %d\n", m);
 	return(m);
 }
 
@@ -101,7 +100,6 @@ int	quartil(int *stack, int n)
 	arr = stack;
 	i = n/3;
 	q = arr[i];
-	//printf("Quartil : %d\n", q);
 	return(q);
 }
 
@@ -114,7 +112,6 @@ int	quartil_second(int *stack, int n)
 	arr = stack;
 	i = (n/3) * 2;
 	q = arr[i];
-	//printf("Quartil : %d\n", q);
 	return(q);
 }
 

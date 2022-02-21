@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 int	ft_atoi(const char *str)
 {
@@ -78,14 +79,14 @@ int	*fill_stack(int n, char **parm)
 	i = n - 1;
 	while(i >= 0)
 	{
-		if (ft_atoi_error(parm[i]))
+		if (ft_atoi_error(parm[i + 1]))
 		{
 			stack[i] = ft_atoi(parm[i + 1]);
 			i--;
 		}
 		else
 		{
-			printf("%s", "ERROR LIMITS\n");
+			write (1, "Error\n", 6);
 			exit(0);
 		}
 	}
@@ -104,45 +105,15 @@ int	*fill_parm(int i, char **str)
 		if (ft_atoi_error(str[n]))
 		{
 			stack[n] = ft_atoi(str[n]);
-			printf("content parm: %d\n", stack[n]);
 			n--;
 		}
 		else
 		{
-			printf("%s", "ERROR LIMITS\n");
+			write (1, "Error\n", 6);
 			exit (0);
 		}
 	}
 	return (stack);
-}
-
-
-void	print_stack(int *stack)
-{
-	int	i;
-	int	*A;
-
-	A = stack;
-	i = 0;
-	while (A[i])
-	{
-		printf("%d\n", A[i]);
-		i++;
-	}
-}
-
-void	print_parm(int *stack)
-{
-	int	i;
-	int	*impr;
-
-	impr = stack;
-	i = 0;
-	while(impr[i])
-	{
-		printf("%d\n", impr[i]);
-		i++;
-	}
 }
 
 static char	**ft_freemem(char **f, size_t i)
