@@ -46,17 +46,17 @@ void	sort_three(t_list **head, t_list **tail)
 	else if (h > s && s > t)
 	{
 		(*head) = swap (*head);
-		reverse_rotateA(head, tail);
+		reverse_rotate_a(head, tail);
 	}
 	else if (h > s && s < t && h > t)
-		rotateA(head, tail);
+		rotate_a(head, tail);
 	else if (h < s && s > t && h < t)
 	{
 		(*head) = swap(*head);	
-		rotateA(head, tail);
+		rotate_a(head, tail);
 	}
 	else if (h < s && s > t && h > t)
-		reverse_rotateA(head, tail);
+		reverse_rotate_a(head, tail);
 }
 
 void	sort_four(t_list **headA, t_list **tailA)
@@ -79,10 +79,10 @@ void	sort_four(t_list **headA, t_list **tailA)
 			temp = temp -> next;
 	}
 	while ((*headA) -> content != min -> content)
-		reverse_rotateA(headA, tailA);
-	pushB(headA, &headB);
+		reverse_rotate_a(headA, tailA);
+	push_b(headA, &headB);
 	sort_three(headA, tailA);
-	pushA(headA, &headB);
+	push_a(headA, &headB);
 }
 
 void	prepare_five(t_list **headA, t_list **headB, t_list **tailA, int m)
@@ -94,11 +94,11 @@ void	prepare_five(t_list **headA, t_list **headB, t_list **tailA, int m)
 	{
 		if((*headA) -> content <= m)
 		{
-			pushB(headA, headB);
+			push_b(headA, headB);
 			i--;
 		}
 		else
-			reverse_rotateA(headA, tailA);
+			reverse_rotate_a(headA, tailA);
 	}
 }
 
@@ -113,13 +113,13 @@ void	sort_five(t_list **headA, t_list **tailA)
 	sort_three(headA, tailA);
 	if ((headB) -> content < (headB) -> next -> content)
 	{
-		(headB) = swapB(headB);
-		pushA(headA, &headB);
-		pushA(headA, &headB);
+		(headB) = swap_b(headB);
+		push_a(headA, &headB);
+		push_a(headA, &headB);
 	}
 	else
 	{
-		pushA(headA, &headB);
-		pushA(headA, &headB);
+		push_a(headA, &headB);
+		push_a(headA, &headB);
 	}
 }

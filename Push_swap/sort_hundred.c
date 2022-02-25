@@ -66,7 +66,7 @@ int	numbers_to_push(int	n)
 	return(i);
 }
 
-void	sort_B(t_list **headA, t_list **headB, t_list **tailB)
+void	sort_b(t_list **headA, t_list **headB, t_list **tailB)
 {
 	t_list	*temp;
 	t_list	*move;
@@ -92,14 +92,14 @@ void	sort_B(t_list **headA, t_list **headB, t_list **tailB)
 		if (i == 1)
 		{
 			while ((*headB) -> content != big)
-				rotateB(headB, tailB);	
-			pushA(headA, headB);
+				rotate_b(headB, tailB);	
+			push_a(headA, headB);
 		}
 		else
 		{
 			while ((*headB) -> content != big)
-				reverse_rotateB(headB,tailB);
-			pushA(headA, headB);
+				reverse_rotate_b(headB,tailB);
+			push_a(headA, headB);
 		}
 	}
 }
@@ -123,16 +123,16 @@ void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, in
 			{
 				temp = temp -> next;
 				while ((*headA) -> content != big)
-					rotateA(headA, tailA);
-				pushB(headA, headB);
+					rotate_a(headA, tailA);
+				push_b(headA, headB);
 				j--;
 			}
 			else
 			{
 				temp = temp -> next;
 				while ((*headA) -> content != big)
-					reverse_rotateA(headA,tailA);
-				pushB(headA, headB);
+					reverse_rotate_a(headA,tailA);
+				push_b(headA, headB);
 				j--;
 			}
 		}
@@ -140,7 +140,7 @@ void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, in
 			temp = temp -> next;
 	}
 	(*tailB) = ft_lstlast(*headB);
-	sort_B(headA, headB, tailB);	
+	sort_b(headA, headB, tailB);	
 }
 
 void	push_small(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int q, int n)
@@ -161,16 +161,16 @@ void	push_small(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, 
 			if (i == 1)
 			{
 				while ((*headA) -> content != big)
-					rotateA(headA, tailA);
-				pushB(headA, headB);
+					rotate_a(headA, tailA);
+				push_b(headA, headB);
 				temp = (*headA);
 				j--;
 			}
 			else
 			{
 				while ((*headA) -> content != big)
-					reverse_rotateA(headA,tailA);
-				pushB(headA, headB);
+					reverse_rotate_a(headA,tailA);
+				push_b(headA, headB);
 				temp = (*headA);
 				j--;
 			}
@@ -179,7 +179,7 @@ void	push_small(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, 
 			temp = temp -> next;
 	}
 	(*tailB) = ft_lstlast(*headB);
-	sort_B(headA, headB, tailB);
+	sort_b(headA, headB, tailB);
 }
 
 void	push_medium(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB, int q, int q2, int n)
@@ -201,16 +201,16 @@ void	push_medium(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB,
 			{
 				temp = temp -> next;
 				while ((*headA) -> content != big)
-					rotateA(headA, tailA);
-				pushB(headA, headB);
+					rotate_a(headA, tailA);
+				push_b(headA, headB);
 				j--;
 			}
 			else
 			{
 				temp = temp -> next;
 				while ((*headA) -> content != big)
-					reverse_rotateA(headA,tailA);
-				pushB(headA, headB);
+					reverse_rotate_a(headA,tailA);
+				push_b(headA, headB);
 				j--;
 			}
 		}
@@ -218,7 +218,6 @@ void	push_medium(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB,
 			temp = temp -> next;
 	}
 	(*tailB) = ft_lstlast(*headB);
-	sort_B(headA, headB, tailB);
+	sort_b(headA, headB, tailB);
 	push_small(headA, headB, tailA, tailB, q, n);
 }
-
