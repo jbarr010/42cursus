@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   median.c                                           :+:      :+:    :+:   */
+/*   median_aux.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 17:12:13 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 19:46:33 by jbarredo         ###   ########.fr       */
+/*   Created: 2022/02/26 13:36:44 by jbarredo          #+#    #+#             */
+/*   Updated: 2022/02/26 19:49:27 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-int	lstsize(t_list *lst)
+int	quartil_second(int *stack, int n)
 {
 	int	i;
+	int	q;
+	int	*arr;
 
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
+	arr = stack;
+	i = (n / 3) * 2;
+	q = arr[i];
+	return (q);
 }
 
-int	auxiliar(t_list *headA)
+int	q_value(t_list *headA)
 {
 	t_list	*aux;
 	int		*arr;
@@ -48,58 +47,34 @@ int	auxiliar(t_list *headA)
 	}
 	arr[i] = '\0';
 	arr = sort_array(arr, n);
-	m = quartil(arr, n);
+	m = quartil_second(arr, n);
 	free(arr);
 	return (m);
 }
 
-int	*sort_array(int	*arr, int n)
+int	m_value(t_list *headA)
 {
-	int	i;
-	int	j;
-	int	temp;
+	t_list	*aux;
+	int		*arr;
+	int		n;
+	int		i;
+	int		m;
 
 	i = 0;
-	j = i + 1;
-	while (j < n)
+	n = lstsize(headA);
+	aux = headA;
+	arr = malloc(sizeof(int) * (n + 1));
+	if (!arr)
+		return (-1);
+	while (aux)
 	{
-		if (arr[i] < arr[j])
-		{
-			i++;
-			j++;
-		}
-		else
-		{
-			temp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = temp;
-			i = 0;
-			j = i + 1;
-		}
+		arr[i] = aux -> content;
+		aux = aux -> next;
+		i++;
 	}
-	return (arr);
-}
-
-int	median(int *stack, int n)
-{
-	int	i;
-	int	m;
-	int	*arr;
-
-	arr = stack;
-	i = n / 2;
-	m = arr[i];
+	arr[i] = '\0';
+	arr = sort_array(arr, n);
+	m = median(arr, n);
+	free(arr);
 	return (m);
-}
-
-int	quartil(int *stack, int n)
-{
-	int	i;
-	int	q;
-	int	*arr;
-
-	arr = stack;
-	i = n / 3;
-	q = arr[i];
-	return (q);
 }

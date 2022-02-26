@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   moves_b.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 19:12:13 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 13:49:41 by jbarredo         ###   ########.fr       */
+/*   Created: 2022/02/26 13:46:26 by jbarredo          #+#    #+#             */
+/*   Updated: 2022/02/26 13:49:38 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 
-t_list	*swap(t_list *head)
+t_list	*swap_b(t_list *head)
 {
 	t_list	*temp;
 	t_list	*second;
@@ -27,23 +27,30 @@ t_list	*swap(t_list *head)
 	temp2 = second ->content;
 	second ->content = temp1;
 	head -> content = temp2;
-	write(1, "sa\n", 3);
+	write(1, "sb\n", 3);
 	return (head);
 }
 
-t_list	*ft_lstlast(t_list *head)
+void	push_b(t_list **headA, t_list **headB)
 {
-	t_list	*last;
+	t_list	*temp2;
+	t_list	*temp3;
 
-	last = head;
-	if (last == NULL)
-		return (NULL);
-	while (last->next != NULL)
-		last = last->next;
-	return (last);
+	temp2 = (*headA)-> next;
+	(*headA)-> next = NULL;
+	if (*headB == NULL)
+		*headB = *headA;
+	else
+	{
+		temp3 = *headB;
+		*headB = *headA;
+		(*headB)-> next = temp3;
+	}
+	*headA = temp2;
+	write(1, "pb\n", 3);
 }
 
-void	reverse_rotate_a(t_list **lst, t_list **last)
+void	reverse_rotate_b(t_list **lst, t_list **last)
 {
 	t_list	*temp;
 	t_list	*print;
@@ -58,24 +65,10 @@ void	reverse_rotate_a(t_list **lst, t_list **last)
 	new_end -> next = NULL;
 	print = (*lst);
 	(*last) = new_end;
-	write(1, "rra\n", 4);
+	write(1, "rrb\n", 4);
 }
 
-void	push_a(t_list **headA, t_list **headB)
-{
-	t_list	*temp2;
-	t_list	*temp3;
-
-	temp2 = (*headB)-> next;
-	(*headB)-> next = NULL;
-	temp3 = *headA;
-	*headA = *headB;
-	(*headA)-> next = temp3;
-	*headB = temp2;
-	write(1, "pa\n", 3);
-}
-
-void	rotate_a(t_list **head, t_list **tail)
+void	rotate_b(t_list **head, t_list **tail)
 {
 	t_list	*temp;
 
@@ -83,5 +76,24 @@ void	rotate_a(t_list **head, t_list **tail)
 	ft_lstadd_tail(temp, (*head));
 	(*tail) = (*head);
 	(*head) = temp;
-	write(1, "ra\n", 3);
+	write(1, "rb\n", 3);
+}
+
+void	ft_lstadd_tail(t_list *lst, t_list *new)
+{
+	t_list	*end;
+
+	end = lst;
+	if (!(lst))
+		lst = new;
+	while (end != NULL)
+	{
+		if (end->next == NULL)
+		{
+			end->next = new;
+			new->next = NULL;
+			break ;
+		}
+		end = end->next;
+	}
 }

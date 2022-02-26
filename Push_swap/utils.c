@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/26 13:08:48 by jbarredo          #+#    #+#             */
+/*   Updated: 2022/02/26 19:48:15 by jbarredo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 t_list	*list_parm (char ** argv)
 {
@@ -42,4 +54,16 @@ t_list	*list_simple(int n, char **argv)
 		write(1, "Error\n", 6);
 		exit(0);
 	}
+}
+
+int	ft_strlen(const char *str)
+{
+	size_t	num;
+
+	num = 0;
+	while (str[num] != '\0')
+	{
+		num++;
+	}
+	return (num);
 }

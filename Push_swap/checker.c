@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:41:49 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/02 20:39:33 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/26 15:01:42 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ int	check_char(int n, char **str)
 	while (i <= n)
 	{
 		j = 0;
-		while(str[i][j])
+		while (str[i][j])
 		{
-			if((str[i][j] >= 48 && str[i][j] <= 57) || str[i][j] == '-' || str[i][j] == ' ')
+			if ((str[i][j] >= 48 && str[i][j] <= 57) ||
+					str[i][j] == '-' || str[i][j] == ' ')
 				j++;
 			else
 				return (0);
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	check_rep(int n, int *stack)
@@ -39,12 +40,12 @@ int	check_rep(int n, int *stack)
 	int	j;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		j = i + 1;
-		while(j < n)
+		while (j < n)
 		{
-			if(stack[i] == stack[j])
+			if (stack[i] == stack[j])
 				return (0);
 			j++;
 		}

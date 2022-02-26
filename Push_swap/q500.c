@@ -6,11 +6,12 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:59:16 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/15 19:54:28 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/26 19:47:55 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 int	quartil_1(int *stack, int n)
 {
