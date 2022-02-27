@@ -6,13 +6,26 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:08:48 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/27 14:46:45 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 00:03:55 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdlib.h>
+
+void	free_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free (str);
+}
 
 t_list	*list_parm(char **argv)
 {
@@ -29,11 +42,14 @@ t_list	*list_parm(char **argv)
 	if (check_rep(i, a))
 	{
 		head_a = ft_arrtoparm(i - 1, a);
+		free (a);
+		free_str(str);
 		return (head_a);
 	}
 	else
 	{
 		write (1, "Error\n", 6);
+		free (a);
 		exit(0);
 	}
 }
@@ -47,11 +63,13 @@ t_list	*list_simple(int n, char **argv)
 	if (check_rep(n, a))
 	{
 		head_a = ft_arrtolist(n, a);
+		free (a);
 		return (head_a);
 	}
 	else
 	{
 		write(1, "Error\n", 6);
+		free (a);
 		exit(0);
 	}
 }

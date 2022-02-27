@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:14:23 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 19:45:30 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 00:03:28 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_arrtolist(int n, int *arr)
 	temp = NULL;
 	p = NULL;
 	i = 0;
-	while (i < n)
+	while (i <= n)
 	{
 		temp = create_temp(arr[i]);
 		if (head == NULL)
@@ -75,6 +75,8 @@ t_list	*create_temp(int i)
 
 	temp = NULL;
 	temp = malloc(sizeof(t_list));
+	if (!temp)
+		return (NULL);
 	temp->content = i;
 	temp->next = NULL;
 	return (temp);

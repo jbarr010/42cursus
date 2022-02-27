@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:54:32 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/27 14:49:16 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/27 23:59:06 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	sort_two(t_list **head);
 void	sort_four(t_list **headA, t_list **tailA);
 void	sort_hundred(t_list **headA, t_list **tailA);
 void	sort_500(t_list **headA, t_list **tailA);
-void	sort_rest(t_list **headA, t_list **tailA);
+void	sort_rest(t_list **headA, t_list **tailA, t_list *head_b, t_list *tail_b);
 int		numbers_to_push_rest(int n);
 void	push2(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB);
 void	push1(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB);
@@ -93,4 +93,5 @@ t_list	*create_temp(int i);
 t_list	*find_max(t_list **headB);
 t_list	*ask_push(t_list **headA, t_list **headB, t_list *temp, t_list **tailA);
 int		is_sorted(t_list *headA);
+void    ft_lstclear(t_list **lst);
 #endif

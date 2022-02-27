@@ -6,7 +6,7 @@
 #    By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 20:19:46 by jbarredo          #+#    #+#              #
-#    Updated: 2022/02/27 14:49:36 by jbarredo         ###   ########.fr        #
+#    Updated: 2022/02/28 00:09:22 by jbarredo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ INCLUDES = push_swap.h
 
 CC=gcc
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address
 
 RM=rm -f
 

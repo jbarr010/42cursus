@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:46:26 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 13:49:38 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/27 23:59:56 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	push_b(t_list **headA, t_list **headB)
 void	reverse_rotate_b(t_list **lst, t_list **last)
 {
 	t_list	*temp;
-	t_list	*print;
 	t_list	*new_end;
 
 	temp = (*lst);
@@ -63,8 +62,7 @@ void	reverse_rotate_b(t_list **lst, t_list **last)
 	*lst = *last;
 	(*lst)-> next = temp;
 	new_end -> next = NULL;
-	print = (*lst);
-	(*last) = new_end;
+	(*last) = ft_lstlast(*lst);
 	write(1, "rrb\n", 4);
 }
 
