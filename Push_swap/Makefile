@@ -6,7 +6,7 @@
 #    By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 20:19:46 by jbarredo          #+#    #+#              #
-#    Updated: 2022/02/26 22:47:15 by jbarredo         ###   ########.fr        #
+#    Updated: 2022/02/27 14:49:36 by jbarredo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS	=  array_to_list.c\
 		   moves_b.c\
 		   sort_five.c\
 		   sort_utils.c\
-		   sort_500_2.c
+		   sort_500_2.c\
+		   q500_2.c
 
 OBJS	= *.o 
 

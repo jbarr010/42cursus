@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:08:48 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 19:48:15 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:46:45 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_list	*list_parm (char ** argv)
+t_list	*list_parm(char **argv)
 {
 	char	**str;
-	int	i;
-	int	*A;
-	t_list	*headA;
+	int		i;
+	int		*a;
+	t_list	*head_a;
 
 	str = ft_split(argv[1], 32);
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
-	A = fill_parm(i, str);
-	if (check_rep(i, A))
+	a = fill_parm(i, str);
+	if (check_rep(i, a))
 	{
-		headA = ft_arrtoparm(i - 1, A);
-		return (headA);
+		head_a = ft_arrtoparm(i - 1, a);
+		return (head_a);
 	}
 	else
 	{
@@ -40,14 +40,14 @@ t_list	*list_parm (char ** argv)
 
 t_list	*list_simple(int n, char **argv)
 {
-	int	*A;
-	t_list	*headA;
-	
-	A = fill_stack(n, argv);
-	if(check_rep(n, A))
+	int		*a;
+	t_list	*head_a;
+
+	a = fill_stack(n, argv);
+	if (check_rep(n, a))
 	{
-		headA = ft_arrtolist(n, A);
-		return (headA);
+		head_a = ft_arrtolist(n, a);
+		return (head_a);
 	}
 	else
 	{
@@ -66,4 +66,24 @@ int	ft_strlen(const char *str)
 		num++;
 	}
 	return (num);
+}
+
+int	is_sorted(t_list *headA)
+{
+	t_list	*temp;
+	t_list	*move;
+
+	temp = headA;
+	move = temp ->next;
+	while (move)
+	{
+		if ((temp -> content) > (move -> content))
+			return (1);
+		else
+		{
+			temp = temp -> next;
+			move = move -> next;
+		}
+	}
+	return (0);
 }

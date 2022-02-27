@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:43:56 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/26 22:39:13 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/27 14:46:48 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,25 @@ int	main(int argc, char **argv)
 			head_a = list_simple(n, argv);
 		tail_a = ft_lstlast(head_a);
 		size = lstsize(head_a);
-		size_choose(head_a, tail_a, n, size);
+		if (is_sorted(head_a))
+			size_choose(head_a, tail_a, size);
+		return (0);
 	}
 	else
 		write (1, "Error\n", 6);
 	return (0);
 }
 
-void	size_choose(t_list *head_a, t_list *tail_a, int n, int size)
+void	size_choose(t_list *head_a, t_list *tail_a, int size)
 {
 	if (size <= 5)
 		sort_small(size, &head_a, &tail_a);
 	else if (size > 5 && size <= 99)
-		sort_rest(&head_a, &tail_a, n);
+		sort_rest(&head_a, &tail_a);
 	else if (size == 100)
 		sort_hundred(&head_a, &tail_a);
 	else if (size > 100 && size <= 499)
-		sort_rest(&head_a, &tail_a, n);
+		sort_rest(&head_a, &tail_a);
 	else if (size == 500)
 		sort_500(&head_a, &tail_a);
 }
