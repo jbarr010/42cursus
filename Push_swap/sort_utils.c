@@ -6,22 +6,18 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 21:55:00 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/27 23:42:03 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:15:33 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-void	sort_hundred(t_list **headA, t_list **tailA)
+void	sort_hundred(t_list **headA, t_list **tailA,
+			t_list **head_b, t_list **tail_b)
 {
-	t_list	*head_b;
-	t_list	*tail_b;
-
-	head_b = NULL;
-	tail_b = NULL;
-	push_big(headA, &head_b, tailA, &tail_b);
-	push_med(headA, &head_b, tailA, &tail_b);
+	push_big(headA, head_b, tailA, tail_b);
+	push_med(headA, head_b, tailA, tail_b);
 }
 
 int	smart_rotate(t_list *head, t_list *num)

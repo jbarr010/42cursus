@@ -6,23 +6,19 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:43:20 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/27 22:39:57 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:10:36 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	sort_500(t_list **headA, t_list **tailA)
+void	sort_500(t_list **headA, t_list **tailA,
+			t_list **head_b, t_list **tail_b)
 {
-	t_list	*head_b;
-	t_list	*tail_b;
-
-	head_b = NULL;
-	tail_b = NULL;
-	push_5(headA, &head_b, tailA, &tail_b);
-	push_3(headA, &head_b, tailA, &tail_b);
-	push_2(headA, &head_b, tailA, &tail_b);
+	push_5(headA, head_b, tailA, tail_b);
+	push_3(headA, head_b, tailA, tail_b);
+	push_2(headA, head_b, tailA, tail_b);
 }
 
 int	numbers_to_push_500(int n)

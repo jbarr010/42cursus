@@ -6,12 +6,11 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:35:02 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/27 23:37:54 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:11:07 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 #include "push_swap.h"
 
 void	push_big(t_list **headA, t_list **headB, t_list **tailA, t_list **tailB)

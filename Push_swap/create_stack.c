@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:02:49 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/28 00:08:02 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:15:31 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,8 @@ int	ft_atoi_error(char *str)
 	while (str[s] >= '0' && str[s] <= '9')
 	{
 		sol = (str[s] - '0') + (sol * 10);
-		if (str[s + 1] == '-')
-			return (0);
-		if ((sol * m < -2147483648) || (sol * m > 2147483647))
+		if ((sol * m < -2147483648) || (sol * m > 2147483647)
+			|| (str[s + 1] == '-'))
 			return (0);
 		s++;
 	}
