@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 13:08:48 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/28 13:12:03 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:02:38 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_list	*list_parm(char **argv)
 
 	str = ft_split(argv[1], 32);
 	i = 0;
+	if (!str[i])
+		exit (0);
 	while (str[i])
 		i++;
 	a = fill_parm(i, str);

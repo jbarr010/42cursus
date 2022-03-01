@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 19:43:56 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/02/28 13:09:29 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:59:13 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	main(int argc, char **argv)
 		size = lstsize(head_a);
 		if (is_sorted(head_a))
 			size_choose(head_a, tail_a, size);
-		return (0);
+		else
+			ft_lstclear(&head_a);
 	}
 	else
 		write (1, "Error\n", 6);
@@ -72,6 +73,8 @@ void	size_choose(t_list *head_a, t_list *tail_a, int size)
 		sort_rest(&head_a, &tail_a, &head_b, &tail_b);
 	else if (size == 500)
 		sort_500(&head_a, &tail_a, &head_b, &tail_b);
+	else
+		sort_rest(&head_a, &tail_a, &head_b, &tail_b);
 	ft_lstclear(&head_a);
 	ft_lstclear(&head_b);
 }
