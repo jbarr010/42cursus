@@ -1,45 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/05 12:56:18 by jbarredo          #+#    #+#             */
+/*   Updated: 2022/03/05 20:16:13 by jbarredo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include "Minitalk.h"
 
-int	ft_atoi(const char *str)
+void	send_signals(char c, int pid)
 {
-	int		s;
-	int		m;
-	long	sol;
+	int	j;
 
-	s = 0;
-	m = 1;
-	sol = 0;
-	while (str[s] && (str[s] == '\t' || str[s] == '\r' || str[s] == ' '
-			||str[s] == '\f' || str[s] == '\v' || str[s] == '\n'))
-		s++;
-	if (str[s] == '+' || str[s] == '-')
+	j = 0;
+	while(j < 8)
 	{
-		if (str[s] == '-')
-			m *= -1;
-		s++;
+		if (c & (128 >> j))
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		usleep(100);
+		j++;
 	}
-	while (str[s] >= '0' && str[s] <= '9')
-	{
-		sol = (str[s] - '0') + (sol * 10);
-		if ((sol * m < -2147483648) || (sol * m > 2147483648))
-			return ((sol * m < -2147483648) - 1);
-		s++;
-	}
-	return (sol * m);
 }
 
 int	main(int argc, char **argv)
 {
-	int	pid;
+	int		pid;
+	int		i;
 
-	if (argc != 2)
+	if (argc != 3)
 	{
 		write(1, "Invalid arguments\n", 18);
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
-	kill(pid, SIGUSR1);
-	return (0);
+	i = 0;
+	while (argv[2][i])
+	{
+		send_signals(argv[2][i], pid);
+		i++;
+	}
+	send_signals('\n', pid);
 }
