@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 18:48:45 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/03/09 15:21:03 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/03/09 20:01:18 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@ static void	handle_sig(int signum, siginfo_t *info, void *context)
 	(void)info;
 	(void)context;
 	if (signum == SIGUSR1)
-	{
-		kill(info->si_pid, SIGUSR2);
 		c ^= 0x80 >> bits;
-	}
 	else if (signum == SIGUSR2)
-	{
-		kill(info->si_pid, SIGUSR2);
 		c |= 0x80 >> bits;
-	}
 	bits++;
-	if (bits == 8)
+	kill(info->si_pid, SIGUSR2);
+	if (bits >= 8)
 	{
 		ft_putchar_fd(c, 1);
 		bits = 0;
@@ -63,4 +58,5 @@ int	main(int argc, char **argv)
 			pause();
 		}
 	}
+	return (0);
 }

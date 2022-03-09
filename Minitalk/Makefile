@@ -6,7 +6,7 @@
 #    By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/05 12:56:40 by jbarredo          #+#    #+#              #
-#    Updated: 2022/03/09 15:24:55 by jbarredo         ###   ########.fr        #
+#    Updated: 2022/03/09 20:03:21 by jbarredo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJS_SERV_BONUS = server_bonus.o\
 
 CC=gcc
 
-CFLAGS= -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address
 
 RM=rm -f
 

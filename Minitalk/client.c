@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 12:56:18 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/03/09 15:18:34 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:14:58 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
+	if (pid == -1 || !pid || argv[2][0] == '\0')
+		return (0);
 	i = 0;
 	while (argv[2][i])
 	{
@@ -49,4 +51,5 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	send_signals('\n', pid);
+	return (0);
 }
