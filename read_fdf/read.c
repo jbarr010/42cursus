@@ -6,7 +6,7 @@
 /*   By: jbarredo <jbarredo@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:44:13 by jbarredo          #+#    #+#             */
-/*   Updated: 2022/03/19 20:30:43 by jbarredo         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:52:53 by jbarredo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,23 @@ int	**create_int(char **map_char, int x, int y)
 	matrix = (int **)malloc(sizeof(int *) * (y));
 	while (i < y)
 	{
-		//printf("X de malloc: %d\n", x);
-		matrix[i] = (int *)malloc(sizeof(int) * x);
+		matrix[i] = (int *)malloc(sizeof(int) * (x));
 		i++;
 	}
-	while (n < y)
+	j = 0;
+	i = 0;
+	/*while (j < y)
+	{
+		while (i < x)
+		{
+			printf("%d", matrix[j][i]);
+			i++;
+		}
+		printf("\n");
+		j++;
+		i = 0;
+	}*/
+	while (n < (y * x))
 	{
 		if (map_char[n][0] == '\n')
 		{
@@ -137,11 +149,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	map_char = create_char(argv[1]);
-	while (map_char[i])
+	/*while (map_char[i])
 	{
 		printf("MAP CHAR : %s\n", map_char[i]);
 		i++;
-	}
+	}*/
 	x = get_x(map_char);
 	y = get_y(map_char);
 	printf("La X es: %d\n", x);
@@ -151,7 +163,7 @@ int	main(int argc, char **argv)
 	{
 		while (i < x)
 		{
-			printf("%d ' '", map_int[j][i]);
+			printf("%d", map_int[j][i]);
 			i++;
 		}
 		printf("\n");
