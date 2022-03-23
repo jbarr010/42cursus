@@ -16,6 +16,32 @@
 #include <unistd.h>
 #include "libft.h"
 
+char	**create_char(char *str)
+{
+	char	**map_char;
+	char		*aux;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	aux = str;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			i++;
+		else
+		{
+			aux[j] = str[i];
+			i++;
+			j++;
+		}
+	}
+	map_char = ft_split(aux, 32);
+	free(str);
+	return (map_char);
+}
+
 int	file_len(char *name)
 {
 	char	*str;
@@ -37,46 +63,54 @@ int	file_len(char *name)
 	return (len);
 }
 
-char	**create_char(char *argv)
+char	*read_file(char *argv)
 {
 	int		fd;
-	char	**map_char;
 	int		len;
-	char	*str;
+	char		*str;
 	int		rd;
 
+	rd = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	len = file_len(argv);
 	str = malloc(sizeof(char) * len);
 	rd = read(fd, str, len);
-	map_char = ft_split(str, 32);
-	free(str);
 	close(fd);
-	return (map_char);
+	return (str);
 }
 
-int	get_x(char **map_char)
+int	get_x(char *str)
 {
 	int	x;
+	int	i;
 
 	x = 0;
-	while (map_char[x][0] != '\n')
-		x++;
+	i = 0;
+	while (str[i] != '\n')
+	{
+		if (str[i] == ' ')
+		{
+			x++;
+			i++;
+		}
+		else
+			i++;
+	}
 	return (x);
 }
 
-int	get_y(char **map_char)
+int	get_y(char *str)
 {
 	int	y;
 	int	i;
 
 	y = 0;
 	i = 0;
-	while (map_char[i] != NULL)
+	while (str[i])
 	{
-		if (map_char[i][0] == '\n')
+		if (str[i] == '\n')
 		{
 			y++;
 			i++;
@@ -105,33 +139,17 @@ int	**create_int(char **map_char, int x, int y)
 	}
 	j = 0;
 	i = 0;
-	/*while (j < y)
-	{
-		while (i < x)
-		{
-			printf("%d", matrix[j][i]);
-			i++;
-		}
-		printf("\n");
-		j++;
-		i = 0;
-	}*/
 	while (n < (y * x))
 	{
-		if (map_char[n][0] == '\n')
-		{
-			j++;
-			i = 0;
-			n++;
-		}
-		else
+		while (i < x)
 		{
 			matrix[j][i] = ft_atoi(map_char[n]);
 			n++;
 			i++;
 		}
+		j++;
+		i = 0;
 	}
-	//matrix[j] = '\0';
 	return (matrix);
 }
 
@@ -143,27 +161,25 @@ int	main(int argc, char **argv)
 	int		x;
 	int		y;
 	int		**map_int;
+	char		*str;
 
 	i = 0;
 	j = 0;
 	if (argc != 2)
 		return (0);
-	map_char = create_char(argv[1]);
-	/*while (map_char[i])
-	{
-		printf("MAP CHAR : %s\n", map_char[i]);
-		i++;
-	}*/
-	x = get_x(map_char);
-	y = get_y(map_char);
+	str = read_file(argv[1]);
+	x = get_x(str);
+	y = get_y(str);
+	map_char = create_char(str);
 	printf("La X es: %d\n", x);
 	printf("La Y es: %d\n", y);
 	map_int = create_int(map_char, x, y);
+	i = 0;
 	while (j < y)
 	{
 		while (i < x)
 		{
-			printf("%d", map_int[j][i]);
+			printf("%d\t", map_int[j][i]);
 			i++;
 		}
 		printf("\n");
